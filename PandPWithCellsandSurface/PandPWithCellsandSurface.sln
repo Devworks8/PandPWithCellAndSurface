@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandPWithCellsandSurface", "PandPWithCellsandSurface.csproj", "{BDC9E420-3C5D-41D9-8438-151B8B5F0538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestPandPWithCellsandSurface", "..\UnitTestPandPWithCellsandSurface\UnitTestPandPWithCellsandSurface.csproj", "{B7245F74-E9CE-4AE1-9571-0AC77B31298E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDC9E420-3C5D-41D9-8438-151B8B5F0538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC9E420-3C5D-41D9-8438-151B8B5F0538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC9E420-3C5D-41D9-8438-151B8B5F0538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC9E420-3C5D-41D9-8438-151B8B5F0538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7245F74-E9CE-4AE1-9571-0AC77B31298E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7245F74-E9CE-4AE1-9571-0AC77B31298E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7245F74-E9CE-4AE1-9571-0AC77B31298E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7245F74-E9CE-4AE1-9571-0AC77B31298E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F0D1FF9-B795-4EA3-AB37-247A8238F7DD}
+	EndGlobalSection
+EndGlobal

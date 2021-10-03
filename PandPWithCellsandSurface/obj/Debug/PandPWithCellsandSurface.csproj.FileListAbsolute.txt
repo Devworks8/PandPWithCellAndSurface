@@ -1,0 +1,7 @@
+D:\Repository\CSharp\GitRepo\PandPWithCellAndSurface\PandPWithCellsandSurface\obj\Debug\PandPWithCellsandSurface.csproj.AssemblyReference.cache
+D:\Repository\CSharp\GitRepo\PandPWithCellAndSurface\PandPWithCellsandSurface\obj\Debug\PandPWithCellsandSurface.csproj.CoreCompileInputs.cache
+D:\Repository\CSharp\GitRepo\PandPWithCellAndSurface\PandPWithCellsandSurface\bin\Debug\PandPWithCellsandSurface.exe.config
+D:\Repository\CSharp\GitRepo\PandPWithCellAndSurface\PandPWithCellsandSurface\bin\Debug\PandPWithCellsandSurface.exe
+D:\Repository\CSharp\GitRepo\PandPWithCellAndSurface\PandPWithCellsandSurface\bin\Debug\PandPWithCellsandSurface.pdb
+D:\Repository\CSharp\GitRepo\PandPWithCellAndSurface\PandPWithCellsandSurface\obj\Debug\PandPWithCellsandSurface.exe
+D:\Repository\CSharp\GitRepo\PandPWithCellAndSurface\PandPWithCellsandSurface\obj\Debug\PandPWithCellsandSurface.pdb
