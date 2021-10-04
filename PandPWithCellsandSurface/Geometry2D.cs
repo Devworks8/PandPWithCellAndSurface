@@ -35,6 +35,8 @@ namespace Psim
 				Y = y ?? Y;
 			}
 			public override string ToString() => $"({X}, {Y})\n";
+			public static Point operator -(Point a, double b) => new Point(a.X - b, a.Y - b);
+			public static Point operator +(Point a, double b) => new Point(a.X + b, a.Y + b);
 		}
 
 

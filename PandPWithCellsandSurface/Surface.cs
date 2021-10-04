@@ -22,8 +22,7 @@ namespace Psim.ModelComponents
 		{
 			Vector direction = p.Direction;
 			
-			// Left/Right -> even ; Top/Bottom -> odd
-			if((int)Location % 2 == 0)
+			if(Location == SurfaceLocation.left || Location == SurfaceLocation.right)
             {
 				p.SetDirection(-direction.DX, direction.DY);
             }

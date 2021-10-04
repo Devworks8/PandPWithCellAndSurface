@@ -29,9 +29,15 @@ namespace Psim.ModelComponents
 	public class Cell : Rectangle
 	{
 		private const int NUM_SURFACES = 4;
+#if DEBUG
+		public List<Phonon> phonons = new List<Phonon>() { };
+		public List<Phonon> incomingPhonons = new List<Phonon>() { };
+		public ISurface[] surfaces = new ISurface[NUM_SURFACES];
+#else
 		private List<Phonon> phonons = new List<Phonon>() { };
 		private List<Phonon> incomingPhonons = new List<Phonon>() { };
 		private ISurface[] surfaces = new ISurface[NUM_SURFACES];
+#endif
 		public List<Phonon> Phonons { get { return phonons; } }
 
 		public Cell(double length, double width)
@@ -68,7 +74,7 @@ namespace Psim.ModelComponents
 		public void MergeIncPhonons()
 		{
 			phonons.AddRange(incomingPhonons);
-			incomingPhonons.ForEach(phonon => incomingPhonons.Remove(phonon));
+			incomingPhonons.Clear();
 		}
 
 		/// <summary>
@@ -92,18 +98,27 @@ namespace Psim.ModelComponents
 		{
 			// TODO - challenging!! be cautious of floating point issues!
 
-			double predictedX = p.Position.X + p.Direction.DX * p.Speed * p.DriftTime;
-			double predictedY = p.Position.Y + p.Direction.DY * p.Speed * p.DriftTime;
+			Point predicted = new Point(p.Position.X + p.Direction.DX * p.Speed * p.DriftTime, p.Position.Y + p.Direction.DY * p.Speed * p.DriftTime);
 
-			if (predictedX > predictedY && predictedX >= Width) return SurfaceLocation.right;
-			else if (predictedY > predictedX && predictedY >= Length) return SurfaceLocation.top;
-			else if (predictedX < predictedY && predictedX <= 0) return SurfaceLocation.left;
-			else if (predictedY < predictedX && predictedY <= 0) return SurfaceLocation.bottom;
-			else if (predictedX == 0 && predictedY == 0) return SurfaceLocation.bottom;
-			else if (predictedX == 0 && predictedY == Length) return SurfaceLocation.right;
-			else if (predictedX == Width && predictedY == 0) return SurfaceLocation.top;
-			else if (predictedX == Width && predictedY == Length) return SurfaceLocation.left;
-			else return null;
+			// Vector = {1,1}
+			if (p.Direction.DX > 0 && p.Direction.DY > 0 && (predicted - Width).X > (predicted - Length).Y) return SurfaceLocation.right;
+			if (p.Direction.DX > 0 && p.Direction.DY > 0 && (predicted - Width).X < (predicted - Length).Y) return SurfaceLocation.top;
+			// Vector = {-1,-1}
+			if (p.Direction.DX < 0 && p.Direction.DY < 0 && (predicted + Width).X > (predicted + Length).Y) return SurfaceLocation.bottom;
+			if (p.Direction.DX < 0 && p.Direction.DY < 0 && (predicted + Width).X < (predicted + Length).Y) return SurfaceLocation.left;
+			// Vector = {1,-1}
+			if (p.Direction.DX > 0 && p.Direction.DY < 0 && (predicted - Width).X > (predicted + Length).Y) return SurfaceLocation.right;
+			if (p.Direction.DX > 0 && p.Direction.DY < 0 && (predicted - Width).X < (predicted + Length).Y) return SurfaceLocation.bottom;
+			//Vector = {-1,1}
+			if (p.Direction.DX < 0 && p.Direction.DY > 0 && (predicted + Width).X > (predicted - Length).Y) return SurfaceLocation.left;
+			if (p.Direction.DX < 0 && p.Direction.DY > 0 && (predicted + Width).X < (predicted - Length).Y) return SurfaceLocation.top;
+			//Vector = {0,+-1} and {+-1,0}
+			if (p.Direction.DX == 0 && p.Direction.DY > 0 && predicted.Y >= Length) return SurfaceLocation.top;
+			if (p.Direction.DX == 0 && p.Direction.DY < 0 && predicted.Y <= 0 ) return SurfaceLocation.bottom;
+			if (p.Direction.DX > 0 && p.Direction.DY == 0 && predicted.X >= Width) return SurfaceLocation.right;
+			if (p.Direction.DX < 0 && p.Direction.DY == 0 && predicted.X <= 0) return SurfaceLocation.left;
+
+			return null;
 		}
 
 		public override string ToString()
